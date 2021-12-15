@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Pizza",
+        "image": "assets/images/pizza(1).png"
+    },
+    {
+        "id": 2,
+        "name": "Bugger",
+        "image": "assets/images/bugger(2).png"
+    },
+    {
+        "id": 3,
+        "name": "Ramen",
+        "image": "assets/images/pizza(3).png"
+    },
+    {
+        "id": 4,
+        "name": "Pizza",
+        "image": "assets/images/pizza(1).png"
+    },
+    {
+        "id": 5,
+        "name": "Bugger",
+        "image": "assets/images/bugger(2).png"
+    },
+    {
+        "id": 5,
+        "name": "Ramen",
+        "image": "assets/images/pizza(3).png"
+    }
+]
