@@ -27,8 +27,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
           Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(14.0)),
+                color: Colors.white, borderRadius: BorderRadius.circular(14.0)),
             child: Icon(
               rightIcon,
               size: 24.0,
@@ -42,16 +41,15 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
 
   Container newMethod() {
     return Container(
-            padding: const EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(14.0)),
-            child: Icon(
-              leftIcon,
-              size: 24.0,
-              color: kDartColor,
-            ),
-          );
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(14.0)),
+      child: Icon(
+        leftIcon,
+        size: 24.0,
+        color: kDartColor,
+      ),
+    );
   }
 
   @override

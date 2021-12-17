@@ -48,7 +48,9 @@ Widget buildProductGrid(BuildContext context, List<Product> products) {
         children: [
           Container(
             decoration: BoxDecoration(
-                color: kDartColor, borderRadius: BorderRadius.circular(20.0)),
+              color: Colors.white, 
+              borderRadius: BorderRadius.circular(20.0)
+            ),
             width: 170.0,
             height: 200.0,
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -64,16 +66,16 @@ Widget buildProductGrid(BuildContext context, List<Product> products) {
                     height: 85,
                   ),
                 ),
-                const SizedBox(height: 5.0),
+                const SizedBox(height: 10.0),
                 Expanded(
                   child: Text(
                     products.elementAt(index).name.toString(),
-                    style: textWhite,
+                    style: nameProductDark,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                const SizedBox(height: 8.0),
+                const SizedBox(height: 5.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
@@ -87,7 +89,7 @@ Widget buildProductGrid(BuildContext context, List<Product> products) {
                   children: [
                     Text(
                       '${products.elementAt(index).duration.toString()} \nMin',
-                      style: textDescription,
+                      style: paragraph,
                       textAlign: TextAlign.center,
                     ),
                     Column(
@@ -101,7 +103,7 @@ Widget buildProductGrid(BuildContext context, List<Product> products) {
                     ),
                     const Text(
                       'Hard \nLvl',
-                      style: textDescription,
+                      style: paragraph,
                       textAlign: TextAlign.center,
                     )
                   ],

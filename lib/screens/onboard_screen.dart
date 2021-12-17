@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/constants/color.dart';
-import 'package:food_app/constants/font_style.dart';
 import 'package:food_app/screens/home_screen.dart';
 
 class OnboardScreen extends StatelessWidget {
@@ -43,10 +42,23 @@ class OnboardScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 28.0),
-                  const Text('Simplify your \ncooking plan', style: headerBold),
+                  const Text(
+                    'Simplify your \ncooking plan', 
+                    style: TextStyle(
+                      fontSize: 28, 
+                      color: kLightFontColor, 
+                      fontWeight: FontWeight.w700
+                    )
+                  ),
                   const SizedBox(height: 24.0),
                   const Text('No more confused about \nyour meal menu',
-                      textAlign: TextAlign.center, style: paragraph),
+                    textAlign: TextAlign.center, 
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: kDarkGreyFontColor,
+                      fontWeight: FontWeight.w400,
+                    )
+                  ),
                   const SizedBox(height: 28.0),
                   // ignore: avoid_unnecessary_containers
                   GestureDetector(
@@ -60,7 +72,11 @@ class OnboardScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16.0)),
                       child: Text(
                         "Let's go".toUpperCase(),
-                        style: textDark,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: kBottomColor,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
                   )

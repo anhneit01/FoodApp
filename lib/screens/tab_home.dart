@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:food_app/constants/color.dart';
 import 'package:food_app/constants/font_style.dart';
 import 'package:food_app/model/category.dart';
+import 'package:food_app/screens/tab_cart.dart';
+import 'package:food_app/view_models/cart_view_model.dart';
 import 'package:food_app/widgets/carousel_banner.dart';
 import 'package:food_app/widgets/category_list.dart';
 import 'package:food_app/widgets/category_title.dart';
 import 'package:food_app/widgets/product/product_grid.dart';
 import 'package:food_app/widgets/product/product_list.dart';
+import 'package:provider/provider.dart';
 
 class TabHome extends StatefulWidget {
   const TabHome({Key? key}) : super(key: key);
@@ -31,16 +34,15 @@ class _TabHomeState extends State<TabHome> {
         child: Column(
           children: [
             CarouselBanner(),
+            const SizedBox(height: 30.0),
             CategoryTitle(content: 'Recommended for you'),
-            const ProductGrid(),
+            const ProductList(),
+            const SizedBox(height: 30.0),
             CategoryTitle(content: 'Meal Category'),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: Category.DATA_CATEGORIES.map((eachCategory) => CategoryList(category: eachCategory)).toList(),
-              ),
-            ),
-            const ProductList()
+            const SizedBox(height: 15.0),
+            const CategoryList(),
+            const SizedBox(height: 30.0),
+            const ProductGrid(),
           ],
         ),
       ),
@@ -53,33 +55,60 @@ class _CustomAppbar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(20.0, 40.0, 10.0, 20.0),
+      margin: const EdgeInsets.only(top: 50.0, bottom: 20.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Expanded(
-              child: TextField(
-            decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none),
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 0, horizontal: 10.0),
-                prefixIcon: Image.asset(
-                  'assets/images/ic_search.png',
-                  color: kDartColor,
+          Container(
+            width: MediaQuery.of(context).size.width * 3 / 5,
+            child: Expanded(
+                child: TextField(
+              decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 10.0),
+                  prefixIcon: Image.asset(
+                    'assets/images/ic_search.png',
+                    color: kDartColor,
+                  ),
+                  hintText: 'Search hear....',
+                  hintStyle: paragraph),
+            )),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                onPressed: () {}, 
+                icon: Image.asset('assets/images/ic_bell.png')
+              ),
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, TabCart.routeName),
+                child: Stack(
+                  children: [
+                    Image.asset('assets/images/ic_cart.png',
+                        color: kDartColor, width: 40, height: 40),
+                    Positioned(
+                      top: -1,
+                      right: -1,
+                      child: Container(
+                        padding: const EdgeInsets.all(6.0),
+                        decoration: const BoxDecoration(
+                          color: kPrimaryColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Text(context.watch<CartViewModel>().totalCart.toString()),
+                      ),
+                    )
+                  ],
                 ),
-                hintText: 'Search hear....',
-                hintStyle: paragraph),
-          )),
-          IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                'assets/images/ic_bell.png',
-                color: kDartColor,
-              ))
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -89,5 +118,5 @@ class _CustomAppbar extends StatelessWidget implements PreferredSize {
   Widget get child => throw UnimplementedError();
 
   @override
-  Size get preferredSize => const Size.fromHeight(80.0);
+  Size get preferredSize => const Size.fromHeight(100.0);
 }

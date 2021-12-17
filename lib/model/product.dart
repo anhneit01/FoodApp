@@ -1,4 +1,5 @@
 class Product {
+  int? id;
   String? name;
   num? price;
   String? desc;
@@ -8,7 +9,8 @@ class Product {
   bool? highLight;
   int? categoryId;
 
-  Product(this.name,
+  Product(this.id,
+    this.name,
     this.price,
     this.desc,
     this.ratings,
@@ -18,6 +20,7 @@ class Product {
     this.categoryId);
 
   Product.fromJSON(Map<String, dynamic> jsonData) {
+    id = jsonData["id"];
     name = jsonData["name"];
     price = jsonData["price"];
     desc = jsonData["desc"];
@@ -29,6 +32,7 @@ class Product {
   }
 
   Map<String, dynamic> toJson() => {
+    'id' : id,
     'name': name,
     'price': price,
     'desc': desc,

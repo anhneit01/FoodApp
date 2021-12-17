@@ -11,5 +11,3 @@ const Color kLightFontColor = Color(0xFFF3F3F3);
 const Color kBackground = Color(0xFFF5F5F5);
 const Color kDarkGreyFontColor = Color(0xFF8E8E8E);
 
-const Color kRedColor = Color(0xFFFF3D3D);
-const Color kLightRedColor = Color(0xFF8D2929);
