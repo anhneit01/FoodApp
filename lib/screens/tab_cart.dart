@@ -11,7 +11,7 @@ class TabCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartViewModel cart = context.read<CartViewModel>();
+    CartViewModel cart = context.watch<CartViewModel>();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -29,7 +29,7 @@ class TabCart extends StatelessWidget {
               'Your Cart',
               style: textDark,
             ),
-            Text('${cart.carts.length} items', style: paragraph)
+            Text('${cart.totalCart} items', style: paragraph)
           ],
         ),
         centerTitle: true,
@@ -38,7 +38,8 @@ class TabCart extends StatelessWidget {
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0),
           child: Dismissible(
-              key: Key('1'),
+              key: ValueKey(cart.carts.elementAt(index)),
+              onDismissed: (DismissDirection direction) => context.read<CartViewModel>().removeCart(cart.carts.elementAt(index)),
               background: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 decoration: BoxDecoration(
@@ -96,53 +97,38 @@ Widget _buildCartItem(BuildContext context, Cart cart) {
                 const SizedBox(width: 80),
                 Row(
                   children: [
-                    GestureDetector(
-                      onTap: () => context.read<CartViewModel>().updateCart(cart),
-                      child: Container(
+                    IconButton(
+                      onPressed: () => context.read<CartViewModel>().updateCart(cart, false), 
+                      icon: Container(
                         padding: const EdgeInsets.all(5.0),
                         decoration: BoxDecoration(
-                          color: kPrimaryColor,
+                          color: kBackground,
                           borderRadius: BorderRadius.circular(10.0)
                         ),
-                        child: const Icon(
-                          Icons.add, 
-                          color: Colors.white,
-                        ),
+                        child: const Icon(Icons.remove)
                       ),
                     ),
                     const SizedBox(width: 7),
                     Text('${cart.quantity}', style: textDark),
                     const SizedBox(width: 7),
-                    GestureDetector(
-                      onTap: () => context.read<CartViewModel>().removeCart(cart),
-                      child: Container(
+                    IconButton(
+                      onPressed: () => context.read<CartViewModel>().updateCart(cart, true), 
+                      icon: Container(
                         padding: const EdgeInsets.all(5.0),
                         decoration: BoxDecoration(
-                          color: kPrimaryColor,
+                          color: kBackground,
                           borderRadius: BorderRadius.circular(10.0)
                         ),
-                        child: const Icon(
-                          Icons.remove, 
-                          color: Colors.white
-                        )
-                      ),
-                    )
+                        child: const Icon(Icons.add))
+                    ),
                   ],
                 )
               ],
             )
           ],
-        )
-      ],
-    ),
-  );
-}
-
-Widget buildProductQuantity(BuildContext context, Cart cart) {
-  return Row(
-    children: [
-
-    ],
+        ),
+      ]
+    )
   );
 }
 
@@ -196,10 +182,10 @@ Widget buildCheckOut(BuildContext context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text.rich(TextSpan(
-                text: "Total: \n\n",
-                style: textDark,
-                children: [TextSpan(text: '\$337.43', style: price)])),
+            Text.rich(TextSpan(
+              text: "Total: \n\n",
+              style: textDark,
+              children: [TextSpan(text: '\$ ${context.read<CartViewModel>().totalPrice.toStringAsFixed(3)}', style: price)])),
             Container(
               width: 190,
               padding: const EdgeInsets.all(20),
