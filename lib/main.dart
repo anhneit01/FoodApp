@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_app/screens/detail.dart';
 import 'package:food_app/screens/home_screen.dart';
+import 'package:food_app/screens/onboard_screen.dart';
 import 'package:food_app/screens/tab_cart.dart';
-import 'package:food_app/screens/tab_home.dart';
 import 'package:food_app/view_models/cart_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +41,7 @@ class _FoodAppState extends State<FoodApp> {
       theme: ThemeData(
         fontFamily: 'Lato',
       ),
-      home: const TabHome(),
+      home: const OnboardScreen(),
     ),
     );
   }

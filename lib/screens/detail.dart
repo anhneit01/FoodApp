@@ -236,19 +236,30 @@ Widget buildProductQuantity(BuildContext context, Product product) {
 
 Widget buildFloatingButton(BuildContext context, Product product) {
     return Container(
-      width: 50,
+      width: 100,
       height: 50,
       child: RawMaterialButton(
-        onPressed: () => context.read<CartViewModel>().addToCart(product),
         fillColor: kPrimaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(40.0),
         ),
         elevation: 2.0,
-        child: Image.asset(
-          'assets/images/ic_cart.png',
-          color: kDartColor,
-          width: 30.0,
+        onPressed: () {  },
+        child: Row(
+          children: [
+            IconButton(
+              onPressed: () => context.read<CartViewModel>().addToCart(product), 
+              icon: Image.asset('assets/images/ic_cart.png')
+            ),
+            Container(
+              padding: const EdgeInsets.all(15.0),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              child: Text(context.watch<CartViewModel>().totalCart.toString(), style: textDark),
+            ),
+          ],
         ),
       ),
     );
