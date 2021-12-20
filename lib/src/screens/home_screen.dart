@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/constants/color.dart';
-import 'package:food_app/screens/tab_cart.dart';
-import 'package:food_app/screens/tab_home.dart';
+import 'package:food_app/src/screens/tab_cart.dart';
+import 'package:food_app/src/screens/tab_home.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/HomeScreen';

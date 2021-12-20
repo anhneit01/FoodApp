@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:food_app/constants/color.dart';
 import 'package:food_app/constants/font_style.dart';
-import 'package:food_app/model/product.dart';
-import 'package:food_app/view_models/cart_view_model.dart';
-import 'package:food_app/widgets/custom_appbar.dart';
+import 'package:food_app/src/model/product.dart';
+import 'package:food_app/src/view_models/cart_view_model.dart';
+import 'package:food_app/src/widgets/custom_appbar.dart';
 import 'package:provider/provider.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -57,7 +57,7 @@ class _DetailScreenState extends State<DetailScreen> {
 }
 
 Widget _buildProductImg(BuildContext context, Product product) {
-  return Container(
+  return SizedBox(
     height: 250,
     child: Stack(
       children: [
@@ -85,7 +85,7 @@ Widget _buildProductImg(BuildContext context, Product product) {
             decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.3),
-                offset: Offset(-1, 10),
+                offset: const Offset(-1, 10),
                 blurRadius: 10,
               )
             ]),
@@ -235,9 +235,9 @@ Widget buildProductQuantity(BuildContext context, Product product) {
 }
 
 Widget buildFloatingButton(BuildContext context, Product product) {
-    return Container(
+    return SizedBox(
       width: 100,
-      height: 50,
+      height: 60,
       child: RawMaterialButton(
         fillColor: kPrimaryColor,
         shape: RoundedRectangleBorder(
@@ -249,10 +249,14 @@ Widget buildFloatingButton(BuildContext context, Product product) {
           children: [
             IconButton(
               onPressed: () => context.read<CartViewModel>().addToCart(product), 
-              icon: Image.asset('assets/images/ic_cart.png')
+              icon: Image.asset(
+                'assets/images/ic_cart.png',
+                width: 30,
+                height: 30
+              )
             ),
             Container(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(10.0),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,

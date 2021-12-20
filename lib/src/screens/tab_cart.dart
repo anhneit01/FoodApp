@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/constants/color.dart';
 import 'package:food_app/constants/font_style.dart';
-import 'package:food_app/model/cart.dart';
-import 'package:food_app/view_models/cart_view_model.dart';
+import 'package:food_app/src/model/cart.dart';
+import 'package:food_app/src/view_models/cart_view_model.dart';
 import 'package:provider/provider.dart';
 
 class TabCart extends StatelessWidget {

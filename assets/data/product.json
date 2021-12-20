@@ -42,5 +42,49 @@
         "duration": 100,
         "highLight": true,
         "categoryId": 1
+    },
+    {   
+        "id": 5,
+        "name": "Maxican Pizza Test Better",
+        "price": 12.9,
+        "desc": "Pizza, dish of Italian origin consisting of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato, olives, mozzarella or other cheese, and many other ingredients, baked quickly—usually, in a commercial setting, using a wood-fired oven heated to a very high temperature—and served hot",
+        "ratings": 4,
+        "image": "assets/images/pizza(1).png",
+        "duration": 50,
+        "highLight": false,
+        "categoryId": 1
+    },
+    {
+        "id": 6,
+        "name": "Pizza Test Better",
+        "price": 100,
+        "desc": "Pizza, dish of Italian origin consisting of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato, olives, mozzarella or other cheese, and many other ingredients, baked quickly—usually, in a commercial setting, using a wood-fired oven heated to a very high temperature—and served hot",
+        "ratings": 4.6,
+        "image": "assets/images/bugger(1).png",
+        "duration": 100,
+        "highLight": false,
+        "categoryId": 1
+    },
+    {
+        "id": 7,
+        "name": "Maxican Pizza Test Better",
+        "price": 34.9,
+        "desc": "Pizza, dish of Italian origin consisting of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato, olives, mozzarella or other cheese, and many other ingredients, baked quickly—usually, in a commercial setting, using a wood-fired oven heated to a very high temperature—and served hot",
+        "ratings": 4,
+        "image": "assets/images/pizza(3).png",
+        "duration": 50,
+        "highLight": false,
+        "categoryId": 1
+    },
+    {
+        "id": 8,
+        "name": "Pizza Test Better",
+        "price": 27.9,
+        "desc": "Pizza, dish of Italian origin consisting of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato, olives, mozzarella or other cheese, and many other ingredients, baked quickly—usually, in a commercial setting, using a wood-fired oven heated to a very high temperature—and served hot",
+        "ratings": 4.6,
+        "image": "assets/images/bugger(3).png",
+        "duration": 100,
+        "highLight": false,
+        "categoryId": 1
     }
 ]

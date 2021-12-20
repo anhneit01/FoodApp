@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/constants/color.dart';
 import 'package:food_app/constants/font_style.dart';
-import 'package:food_app/model/category.dart';
-import 'package:food_app/screens/tab_cart.dart';
-import 'package:food_app/view_models/cart_view_model.dart';
-import 'package:food_app/widgets/carousel_banner.dart';
-import 'package:food_app/widgets/category_list.dart';
-import 'package:food_app/widgets/category_title.dart';
-import 'package:food_app/widgets/product/product_grid.dart';
-import 'package:food_app/widgets/product/product_list.dart';
+import 'package:food_app/src/model/category.dart';
+import 'package:food_app/src/screens/tab_cart.dart';
+import 'package:food_app/src/view_models/cart_view_model.dart';
+import 'package:food_app/src/widgets/carousel_banner.dart';
+import 'package:food_app/src/widgets/category/category_list.dart';
+import 'package:food_app/src/widgets/category_title.dart';
+import 'package:food_app/src/widgets/product/product_grid.dart';
+import 'package:food_app/src/widgets/product/product_list.dart';
 import 'package:provider/provider.dart';
 
 class TabHome extends StatefulWidget {
@@ -19,6 +19,8 @@ class TabHome extends StatefulWidget {
 }
 
 class _TabHomeState extends State<TabHome> {
+  int selected = 0;
+  final pageController = PageController();
   List<Category> categories = [];
   @override
   void initState() {
@@ -40,9 +42,16 @@ class _TabHomeState extends State<TabHome> {
             const SizedBox(height: 30.0),
             CategoryTitle(content: 'Meal Category'),
             const SizedBox(height: 15.0),
-            const CategoryList(),
+            CategoryList(
+              selected: selected,
+              callback: (int index) {
+                setState(() {
+                  selected = index;
+                });
+              },
+            ),
             const SizedBox(height: 30.0),
-            const ProductGrid(),
+            const ProductGrid()
           ],
         ),
       ),
@@ -83,9 +92,8 @@ class _CustomAppbar extends StatelessWidget implements PreferredSize {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                onPressed: () {}, 
-                icon: Image.asset('assets/images/ic_bell.png')
-              ),
+                  onPressed: () {},
+                  icon: Image.asset('assets/images/ic_bell.png')),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(context, TabCart.routeName),
                 child: Stack(
@@ -101,7 +109,10 @@ class _CustomAppbar extends StatelessWidget implements PreferredSize {
                           color: kPrimaryColor,
                           shape: BoxShape.circle,
                         ),
-                        child: Text(context.watch<CartViewModel>().totalCart.toString()),
+                        child: Text(context
+                            .watch<CartViewModel>()
+                            .totalCart
+                            .toString()),
                       ),
                     )
                   ],

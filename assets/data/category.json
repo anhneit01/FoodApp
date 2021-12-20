@@ -23,10 +23,5 @@
         "id": 5,
         "name": "Bugger",
         "image": "assets/images/bugger(2).png"
-    },
-    {
-        "id": 5,
-        "name": "Ramen",
-        "image": "assets/images/pizza(3).png"
     }
 ]

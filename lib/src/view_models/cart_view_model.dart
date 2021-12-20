@@ -1,9 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:food_app/model/cart.dart';
-import 'package:food_app/model/product.dart';
+import 'package:food_app/src/model/cart.dart';
+import 'package:food_app/src/model/product.dart';
 
 class CartViewModel extends ChangeNotifier{
+  // ignore: prefer_final_fields
   List<Cart> _carts = [];
 
   int get totalCart => _totalCart();
