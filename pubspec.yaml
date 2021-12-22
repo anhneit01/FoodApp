@@ -36,8 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   transparent_image: ^2.0.0
   smooth_page_indicator: ^1.0.0+2
+  carousel_slider: ^4.0.0
   provider: ^6.0.1
-  introduction_screen: ^2.1.0
+  flutter_staggered_grid_view: ^0.4.1
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +64,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/fonts/Lato/
+    - assets/fonts/Assistant/
     - assets/images/
     - assets/data/
 
@@ -79,9 +80,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Lato
+    - family: Assistant
       fonts:
-        - asset: assets/fonts/Lato/Lato-Regular.ttf
+        - asset: assets/fonts/Assistant/Assistant-Regular.ttf
           weight: 400
   #   - family: Trajan Pro
   #     fonts:

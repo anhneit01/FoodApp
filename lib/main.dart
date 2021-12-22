@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_app/src/screens/detail.dart';
 import 'package:food_app/src/screens/home_screen.dart';
-import 'package:food_app/src/screens/onboard_screen.dart';
+import 'package:food_app/src/screens/search/search_screen.dart';
 import 'package:food_app/src/screens/tab_cart.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
-import 'package:food_app/src/widgets/category/category_list.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -38,11 +37,12 @@ class _FoodAppState extends State<FoodApp> {
         '/HomeScreen' : (context) => const HomeScreen(),
         '/DetailScreen' : (context) => const DetailScreen(),
         '/TabCart' : (context) => const TabCart(),
+        '/SearchScreen' : (context) => const SearchScreen(),
       },
       theme: ThemeData(
-        fontFamily: 'Lato',
+        fontFamily: 'Assistant',
       ),
-      home: const OnboardScreen(),
+      home: const HomeScreen(),
     ),
     );
   }

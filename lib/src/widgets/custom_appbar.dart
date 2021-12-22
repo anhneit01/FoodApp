@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/constants/color.dart';
+import 'package:food_app/theme/color.dart';
+import 'package:food_app/theme/font_style.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSize {
   final IconData leftIcon;
   final IconData rightIcon;
+  final String? text;
+  final String? smallText;
   final Function? leftCallback;
 
   const CustomAppbar(
       {Key? key,
       required this.leftIcon,
       required this.rightIcon,
-      this.leftCallback})
+      this.leftCallback,
+      this.text,
+      this.smallText})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(32.0, 40.0, 32.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(15.0, 40.0, 15.0, 0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -24,14 +29,36 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
             onTap: leftCallback != null ? () => leftCallback!() : null,
             child: newMethod(),
           ),
+          Center(
+            child: Column(
+              children: [
+                Text(
+                  text ?? '',
+                  style: titleDark,
+                ),
+                Text(smallText ?? '', style: paragraphDark)
+              ],
+            ),
+          ),
           Container(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(14.0)),
-            child: Icon(
-              rightIcon,
-              size: 24.0,
-              color: kDartColor,
+              color: kWhiteColor,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.1),
+                  spreadRadius: 2.0,
+                  blurRadius: 10.0,
+                )
+              ],
+            ),
+            child: Center(
+              child: Icon(
+                rightIcon,
+                size: 24.0,
+                color: kDarkGreyColor,
+              ),
             ),
           )
         ],
@@ -41,13 +68,24 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
 
   Container newMethod() {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(14.0)),
-      child: Icon(
-        leftIcon,
-        size: 24.0,
-        color: kDartColor,
+        color: kWhiteColor,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 2.0,
+            blurRadius: 10.0,
+          )
+        ],
+      ),
+      child: Center(
+        child: Icon(
+          leftIcon,
+          size: 24.0,
+          color: kDarkGreyColor,
+        ),
       ),
     );
   }

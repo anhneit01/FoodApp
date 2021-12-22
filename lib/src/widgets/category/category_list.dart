@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/constants/color.dart';
 import 'package:food_app/src/view_models/category_view_model.dart';
+import 'package:food_app/theme/color.dart';
 import 'package:provider/provider.dart';
 
 class CategoryList extends StatefulWidget {
@@ -32,19 +32,22 @@ class _CategoryListState extends State<CategoryList> {
                 return GestureDetector(
                   onTap: () => widget.callback(index),
                   child: Container(
+                    width: 120,
                     decoration: BoxDecoration(
-                      color: widget.selected == index ? kPrimaryColor : Colors.white,
-                      borderRadius: BorderRadius.circular(20.0)),
+                      color: widget.selected == index ? kPrimaryColor : kLightWhiteColor,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
                     margin: const EdgeInsets.only(left: 15.0),
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           padding: const EdgeInsets.only(right: 3.0),
                           child: Image.asset(
                             category.allCategories.elementAt(index).image.toString(),
-                            height: 30.0,
-                            width: 30.0,
+                            height: 40.0,
+                            width: 40.0,
                             fit: BoxFit.contain,
                           ),
                         ),

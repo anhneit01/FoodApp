@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/constants/color.dart';
 import 'package:food_app/src/model/category.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -39,8 +38,7 @@ class CategoryItem extends StatelessWidget {
                 category.name.toString(),
                 style: const TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: kLightGreyColor),
+                    fontWeight: FontWeight.w600,),
               )
             ],
           ),

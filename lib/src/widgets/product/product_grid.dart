@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:food_app/src/screens/detail.dart';
 import 'package:food_app/src/view_models/product_view_model.dart';
 import 'package:food_app/src/widgets/product/product_widget.dart';
@@ -25,12 +26,12 @@ class _ProductGridState extends State<ProductGrid> with ProductWidget {
       create: (_) => ProductViewModel(),
       child: Consumer<ProductViewModel>(
         builder: (context, product, child) {
-          return GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.9,
-              mainAxisSpacing: 20,
-            ), 
+          return StaggeredGridView.countBuilder(
+            staggeredTileBuilder: (index) => StaggeredTile.count(3, index.isEven ? 3.4 : 3.6),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            crossAxisCount: 6,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
             itemBuilder: (context, index) => GestureDetector(
               onTap: () => Navigator.pushNamed(context, DetailScreen.routeName, arguments: jsonEncode(product.allProducts.elementAt(index))),
               child: buildProductItemGrid(context, product.allProducts.elementAt(index)),

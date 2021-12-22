@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/constants/font_style.dart';
+import 'package:food_app/theme/font_style.dart';
 
 // ignore: must_be_immutable
 class CategoryTitle extends StatelessWidget {
@@ -9,12 +9,11 @@ class CategoryTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(content, style: title),
-          
+          Text(content, style: titleDark),
         ],
       ),
     );

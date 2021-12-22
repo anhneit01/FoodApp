@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/constants/color.dart';
-import 'package:food_app/constants/font_style.dart';
 import 'package:food_app/src/model/product.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
+import 'package:food_app/theme/color.dart';
+import 'package:food_app/theme/font_style.dart';
 import 'package:provider/provider.dart';
 
 class ProductWidget {
@@ -37,7 +37,7 @@ class ProductWidget {
                         child: Text(
                           product.name.toString(),
                           overflow: TextOverflow.ellipsis,
-                          style: nameProductWhite,
+                          style: nameLight,
                         ),
                       ),
                     ),
@@ -47,7 +47,7 @@ class ProductWidget {
                 Text(
                   product.desc.toString(),
                   overflow: TextOverflow.ellipsis,
-                  style: paragraph,
+                  style: paragraphLight,
                 ),
                 const SizedBox(height: 10.0),
                 Row(
@@ -55,9 +55,19 @@ class ProductWidget {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 20.0),
-                      child: Text(
-                        "${product.price.toString()} \$",
-                        style: price,
+                      child: Row(
+                        children: [
+                          Text('\$', style: TextStyle(fontSize: 17, color: kPrimaryColor.withOpacity(0.4), fontWeight: FontWeight.w600)),
+                          const SizedBox(width: 5.0),
+                          Text(
+                            product.price.toString(),
+                            style: const TextStyle(
+                              fontSize: 28, 
+                              color: kPrimaryColor,
+                              fontWeight: FontWeight.w800
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     GestureDetector(
@@ -66,12 +76,12 @@ class ProductWidget {
                         child: Container(
                           padding: const EdgeInsets.all(6.0),
                           decoration: const BoxDecoration(
-                              color: kBackground, shape: BoxShape.circle),
+                              color: kWhiteColor, shape: BoxShape.circle),
                           child: Image.asset(
-                            'assets/images/ic_cart.png',
+                            'assets/images/ic_bag.png',
                             width: 25,
                             height: 25,
-                            color: kDartColor,
+                            color: kDarkGreyColor,
                           ),
                         )),
                   ],
@@ -87,12 +97,21 @@ class ProductWidget {
   Widget buildProductItemGrid(BuildContext context, Product product) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+        color: kWhiteColor,
+        borderRadius: BorderRadius.circular(20.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 2.0,
+            blurRadius: 10.0,
+          )
+        ],
+      ),
       width: 170.0,
-      height: 200.0,
-      margin: const EdgeInsets.symmetric(horizontal: 15.0),
+      height: 220.0,
       padding: const EdgeInsets.all(15.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
@@ -102,11 +121,11 @@ class ProductWidget {
               height: 90,
             ),
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 5.0),
           Expanded(
             child: Text(
               product.name.toString(),
-              style: nameProductDark,
+              style: nameDark,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
             ),
@@ -114,32 +133,31 @@ class ProductWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-              num.parse(product.ratings.toString()).toInt(),
-              (index) => Image.asset('assets/images/ic_fillstar.png', width: 15)
-            ),
+                num.parse(product.ratings.toString()).toInt(),
+                (index) =>
+                    Image.asset('assets/images/ic_fillstar.png', width: 15)),
           ),
-          const SizedBox(height: 10.0),
+          const SizedBox(height: 5.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 '${product.duration.toString()} \nMin',
-                style: paragraph,
+                style: paragraphDark,
                 textAlign: TextAlign.center,
               ),
               Column(
                 children: List.generate(
-                  12,
-                  (index) => Container(
-                    width: 1.0,
-                    height: 1.0,
-                    color: kDarkGreyFontColor,
-                  )
-                ),
+                    12,
+                    (index) => Container(
+                          width: 1.0,
+                          height: 1.0,
+                          color: kLightGreyColor,
+                        )),
               ),
               const Text(
                 'Hard \nLvl',
-                style: paragraph,
+                style: paragraphDark,
                 textAlign: TextAlign.center,
               )
             ],

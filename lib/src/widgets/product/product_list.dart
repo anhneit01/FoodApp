@@ -30,7 +30,7 @@ class _ProductListState extends State<ProductList> with ProductWidget{
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.only(top: 20.0, left: 20.0),
+                padding: const EdgeInsets.only(top: 20.0, left: 10.0),
                 child: GestureDetector(
                   onTap: () => Navigator.pushNamed(context, DetailScreen.routeName,
                       arguments: jsonEncode(product.allProducts.elementAt(index))),

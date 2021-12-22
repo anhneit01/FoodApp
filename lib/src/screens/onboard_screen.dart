@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/constants/color.dart';
 import 'package:food_app/src/screens/home_screen.dart';
+import 'package:food_app/theme/color.dart';
 
 class OnboardScreen extends StatelessWidget {
   const OnboardScreen({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class OnboardScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-                  color: kDartColor,
+                  color: kDarkColor,
                   borderRadius: BorderRadius.circular(50.0),
                   boxShadow: const [
                     BoxShadow(offset: Offset(0, 8), blurRadius: 4.0)
@@ -46,7 +46,7 @@ class OnboardScreen extends StatelessWidget {
                     'Simplify your \ncooking plan', 
                     style: TextStyle(
                       fontSize: 28, 
-                      color: kLightFontColor, 
+                      color: kLightWhiteColor, 
                       fontWeight: FontWeight.w700
                     )
                   ),
@@ -55,7 +55,7 @@ class OnboardScreen extends StatelessWidget {
                     textAlign: TextAlign.center, 
                     style: TextStyle(
                       fontSize: 20,
-                      color: kDarkGreyFontColor,
+                      color: kBorderColor,
                       fontWeight: FontWeight.w400,
                     )
                   ),

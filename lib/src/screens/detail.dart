@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:food_app/constants/color.dart';
-import 'package:food_app/constants/font_style.dart';
 import 'package:food_app/src/model/product.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
 import 'package:food_app/src/widgets/custom_appbar.dart';
+import 'package:food_app/theme/color.dart';
+import 'package:food_app/theme/font_style.dart';
 import 'package:provider/provider.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -37,22 +37,21 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomAppbar(
-              leftIcon: Icons.arrow_back_ios_new_rounded,
-              rightIcon: Icons.favorite_rounded,
-              leftCallback: () => Navigator.of(context).pop(),
-            ),
-            _buildProductImg(context, product!),
-            buildProductDetail(context, product!)
-          ],
+        backgroundColor: kPrimaryColor,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              CustomAppbar(
+                leftIcon: Icons.arrow_back_ios_new_rounded,
+                rightIcon: Icons.favorite_border_rounded,
+                leftCallback: () => Navigator.of(context).pop(),
+              ),
+              _buildProductImg(context, product!),
+              buildProductDetail(context, product!)
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: buildFloatingButton(context, product!)
-    );
+        floatingActionButton: buildFloatingButton(context, product!));
   }
 }
 
@@ -71,7 +70,7 @@ Widget _buildProductImg(BuildContext context, Product product) {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50.0),
                         topRight: Radius.circular(50.0)),
-                    color: kBackground),
+                    color: kWhiteColor),
               ),
             ),
           ],
@@ -103,14 +102,10 @@ Widget _buildProductImg(BuildContext context, Product product) {
 Widget buildProductDetail(BuildContext context, Product product) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 30.0),
-    color: kBackground,
+    color: kWhiteColor,
     child: Column(
       children: [
-        Text(
-          product.name.toString(),
-          style: const TextStyle(
-              fontSize: 22, color: kDarkGreyColor, fontWeight: FontWeight.w700),
-        ),
+        Text(product.name.toString(), style: titleDark),
         const SizedBox(height: 20.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -131,10 +126,10 @@ Widget buildProductDetail(BuildContext context, Product product) {
             const Text(
               'Description',
               maxLines: 5,
-              style: textDark,
+              style: nameDark,
             ),
             const SizedBox(
-              height: 20.0,
+              height: 10.0,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -144,7 +139,7 @@ Widget buildProductDetail(BuildContext context, Product product) {
                     height: 1.5,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    color: kDarkGreyFontColor,
+                    color: kBorderColor,
                   )),
             ),
           ],
@@ -165,17 +160,14 @@ Widget buildIconText(IconData icon, Color color, String text) {
       Text(
         text,
         style: const TextStyle(
-          fontSize: 15, 
-          color: kDarkGreyFontColor, 
-          fontWeight: FontWeight.w600
-        ),
+            fontSize: 15, color: kBorderColor, fontWeight: FontWeight.w600),
       )
     ],
   );
 }
 
 Widget buildProductQuantity(BuildContext context, Product product) {
-  return Container(
+  return SizedBox(
     width: double.maxFinite,
     height: 50,
     child: Stack(
@@ -184,24 +176,21 @@ Widget buildProductQuantity(BuildContext context, Product product) {
           alignment: const Alignment(-0.3, 0),
           child: Container(
             height: double.maxFinite,
-            width: 120,
+            width: 170,
             decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(30.0)),
             child: Row(
               children: [
                 const SizedBox(width: 15.0),
-                const Text(
-                  '\$',
-                  style: textDark,
-                ),
-                Text(product.price.toString(), style: textDark),
+                const Text('\$', style: currencyUnit),
+                Text(product.price.toString(), style: price)
               ],
             ),
           ),
         ),
         Align(
-          alignment: Alignment(0.3, 0),
+          alignment: const Alignment(0.3, 0),
           child: Container(
             height: double.maxFinite,
             width: 120,
@@ -213,17 +202,17 @@ Widget buildProductQuantity(BuildContext context, Product product) {
               children: [
                 const Text(
                   '-',
-                  style: textDark,
+                  style: nameDark,
                 ),
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Colors.white),
-                  child: const Text('1', style: textDark),
+                  child: const Text('1', style: nameDark),
                 ),
                 const Text(
                   '+',
-                  style: textDark,
+                  style: nameDark,
                 ),
               ],
             ),
@@ -235,36 +224,35 @@ Widget buildProductQuantity(BuildContext context, Product product) {
 }
 
 Widget buildFloatingButton(BuildContext context, Product product) {
-    return SizedBox(
-      width: 100,
-      height: 60,
-      child: RawMaterialButton(
-        fillColor: kPrimaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40.0),
-        ),
-        elevation: 2.0,
-        onPressed: () {  },
-        child: Row(
-          children: [
-            IconButton(
-              onPressed: () => context.read<CartViewModel>().addToCart(product), 
-              icon: Image.asset(
-                'assets/images/ic_cart.png',
-                width: 30,
-                height: 30
-              )
-            ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: Text(context.watch<CartViewModel>().totalCart.toString(), style: textDark),
-            ),
-          ],
-        ),
+  return SizedBox(
+    width: 95,
+    height: 60,
+    child: RawMaterialButton(
+      fillColor: kPrimaryColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(40.0),
       ),
-    );
-  }
+      elevation: 2.0,
+      onPressed: () {},
+      child: Row(
+        children: [
+          IconButton(
+              onPressed: () => context.read<CartViewModel>().addToCart(product),
+              icon: Image.asset(
+                'assets/images/ic_bag.png',
+                width: 30,
+              )),
+          Container(
+            padding: const EdgeInsets.all(10.0),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: Text(context.watch<CartViewModel>().totalCart.toString(),
+                style: nameDark),
+          ),
+        ],
+      ),
+    ),
+  );
+}
