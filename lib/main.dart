@@ -5,6 +5,7 @@ import 'package:food_app/src/screens/home_screen.dart';
 import 'package:food_app/src/screens/search/search_screen.dart';
 import 'package:food_app/src/screens/tab_cart.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
+import 'package:food_app/src/widgets/shimmer/shimmer_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {

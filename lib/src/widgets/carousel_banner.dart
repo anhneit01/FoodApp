@@ -44,6 +44,7 @@ class _CarouselBannerState extends State<CarouselBanner> {
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 2),
             viewportFraction: 1,
+            height: 200,
             onPageChanged: (index, reason) =>
                 setState(() => activeIndex = index),
           )
@@ -84,7 +85,7 @@ class _CarouselBannerState extends State<CarouselBanner> {
         ),
         const Positioned(
             left: 30,
-            top: 80,
+            top: 60,
             child: Text(
               'Black Friday',
               style: TextStyle(
@@ -94,7 +95,7 @@ class _CarouselBannerState extends State<CarouselBanner> {
             )),
         const Positioned(
             left: 30,
-            top: 120,
+            top: 105,
             child: Text(
                 'Pizza, dish of Italian origin consisting \nheated to a very high temperature—and served hot',
                 style: paragraphLight)),

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/src/model/category.dart';
-import 'package:food_app/src/screens/search/search_screen.dart';
 import 'package:food_app/src/widgets/carousel_banner.dart';
 import 'package:food_app/src/widgets/category/category_list.dart';
 import 'package:food_app/src/widgets/category_title.dart';
 import 'package:food_app/src/widgets/product/product_grid.dart';
 import 'package:food_app/src/widgets/product/product_list.dart';
 import 'package:food_app/theme/color.dart';
-import 'package:food_app/theme/font_style.dart';
 
 class TabHome extends StatefulWidget {
   const TabHome({Key? key}) : super(key: key);
@@ -85,19 +83,3 @@ class _CustomAppbar extends StatelessWidget implements PreferredSize {
   @override
   Size get preferredSize => const Size.fromHeight(100.0);
 }
-
-
-// IconButton(
-//                 onPressed: () => Navigator.pushNamed(context, TabCart.routeName),
-//                 icon: Container(
-//                   decoration: const BoxDecoration(
-//                     color: kBottomColor,
-//                     shape: BoxShape.circle,
-//                   ),
-//                   child: Center(
-//                       child: Text(
-//                     context.watch<CartViewModel>().totalCart.toString(),
-//                     style: nameLight,
-//                   )),
-//                 ),
-//               ),
