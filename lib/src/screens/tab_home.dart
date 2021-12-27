@@ -61,13 +61,9 @@ class _CustomAppbar extends StatelessWidget implements PreferredSize {
     return Container(
       padding: const EdgeInsets.only(left: 5, right: 15.0, top: 15.0, bottom: 10.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {}, 
-            icon: const Icon(Icons.arrow_back_ios_new_rounded)
-          ),
-          const CircleAvatar(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [
+          CircleAvatar(
             radius: 20,
             backgroundColor: kBottomColor,
             backgroundImage: AssetImage('assets/images/avata.png'),

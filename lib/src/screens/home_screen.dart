@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/src/screens/search/search_screen.dart';
 import 'package:food_app/src/screens/tab_cart.dart';
+import 'package:food_app/src/screens/tab_chat.dart';
 import 'package:food_app/src/screens/tab_home.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
 import 'package:food_app/src/widgets/scroll_to_hide_widget.dart';
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late ScrollController controller;
   List<Widget> bottomTab = [
     const TabHome(),
-    const TabHome(),
+    const TabChat(),
     const SearchScreen(),
     const TabCart(),
     const TabHome(),

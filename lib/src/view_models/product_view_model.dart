@@ -1,24 +1,37 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: prefer_final_fields
+
 import 'package:food_app/src/model/product.dart';
 import 'package:food_app/src/service/reponsive/product_reponsive.dart';
+import 'package:food_app/src/view_models/base/base_list_view_model.dart';
 
-class ProductViewModel extends ChangeNotifier {
+class ProductViewModel extends BaseListViewModel {
   ProductReponsive _productReponsive = ProductReponsive();
   List<Product> _allProducts = [];
-  bool _isLoading = false;
 
   List<Product> get allProducts => _allProducts;
 
   ProductViewModel() {
     loadProducts();
   }
-
+  
   loadProducts() async {
-    _isLoading = true;
-    notifyListeners();
     List<Product> products = await _productReponsive.readProductData();
     _allProducts.addAll(products);
-    _isLoading = true;
     notifyListeners();
+  }
+
+  @override
+  Future<void> onLoading() async {
+    List<Product> products = await _productReponsive.readProductData();
+    _allProducts.addAll(products);
+    refreshController.loadComplete();
+  }
+
+  @override
+  Future<void> onRefresh() async {
+    _allProducts = [];
+    List<Product> products = await _productReponsive.readProductData();
+    _allProducts.addAll(products);
+    refreshController.refreshCompleted();
   }
 }

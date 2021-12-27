@@ -6,12 +6,12 @@ import 'package:food_app/theme/font_style.dart';
 import 'package:provider/provider.dart';
 
 class ProductWidget {
-  Widget buildProductItemList(BuildContext context, Product product) {
+  Widget buildProductItemList(BuildContext context, Product product, Color color, double width, TextStyle nameProduct) {
     return Container(
       padding: const EdgeInsets.all(15.0),
-      width: 300.0,
+      width: width,
       decoration: BoxDecoration(
-        color: kDarkGreyColor,
+        color: color,
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Row(
@@ -37,7 +37,7 @@ class ProductWidget {
                         child: Text(
                           product.name.toString(),
                           overflow: TextOverflow.ellipsis,
-                          style: nameLight,
+                          style: nameProduct,
                         ),
                       ),
                     ),
@@ -77,11 +77,13 @@ class ProductWidget {
                           padding: const EdgeInsets.all(6.0),
                           decoration: const BoxDecoration(
                               color: kWhiteColor, shape: BoxShape.circle),
-                          child: Image.asset(
-                            'assets/images/ic_bag.png',
-                            width: 25,
-                            height: 25,
-                            color: kDarkGreyColor,
+                          child: Center(
+                            child: Image.asset(
+                              'assets/images/ic_bag.png',
+                              width: 25,
+                              height: 25,
+                              color: kDarkGreyColor,
+                            ),
                           ),
                         )),
                   ],

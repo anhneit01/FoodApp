@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:food_app/src/model/product.dart';
+import 'package:food_app/src/screens/tab_chat.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
 import 'package:food_app/src/widgets/custom_appbar.dart';
 import 'package:food_app/theme/color.dart';
@@ -37,21 +38,22 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kPrimaryColor,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              CustomAppbar(
-                leftIcon: Icons.arrow_back_ios_new_rounded,
-                rightIcon: Icons.favorite_border_rounded,
-                leftCallback: () => Navigator.of(context).pop(),
-              ),
-              _buildProductImg(context, product!),
-              buildProductDetail(context, product!)
-            ],
-          ),
+      backgroundColor: kPrimaryColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomAppbar(
+              leftIcon: Icons.arrow_back_ios_new_rounded,
+              rightIcon: Icons.favorite_border_rounded,
+              leftCallback: () => Navigator.of(context).pop(),
+            ),
+            _buildProductImg(context, product!),
+            buildProductDetail(context, product!)
+          ],
         ),
-        floatingActionButton: buildFloatingButton(context, product!));
+      ),
+      bottomNavigationBar: buildMultiButton(context, product!),
+    );
   }
 }
 
@@ -250,6 +252,85 @@ Widget buildFloatingButton(BuildContext context, Product product) {
             ),
             child: Text(context.watch<CartViewModel>().totalCart.toString(),
                 style: nameDark),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget buildMultiButton(BuildContext context, Product product){
+  return Container(
+    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+    height: 100,
+    width: MediaQuery.of(context).size.width,
+    decoration: BoxDecoration(
+      color: kWhiteColor,
+      boxShadow: [ BoxShadow(
+        color: Colors.grey.withOpacity(0.1),
+        spreadRadius: 5.0,
+        blurRadius: 50.0,
+      )]
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        buildButtonItemBordered(context,'Chat', kPrimaryColor, 'assets/images/ic_chat.png'),
+        buildButtonItemFill(context, 'Add Cart', kPrimaryColor, product)
+      ],
+    ),
+  );
+}
+
+Widget buildButtonItemFill(BuildContext context, String text, Color color, Product product){
+  return GestureDetector(
+    onTap: () { 
+      context.read<CartViewModel>().addToCart(product);
+      Navigator.pop(context);
+    },
+    child: Container(
+      margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+      padding: const EdgeInsets.all(15.0),
+      width: MediaQuery.of(context).size.width * 1/2,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(15.0)
+      ),
+      child: Text(
+        text.toUpperCase(),
+        textAlign: TextAlign.center,
+        style: titleLight,
+      ),
+    ),
+  );
+}
+Widget buildButtonItemBordered(BuildContext context, String text, Color color, String iconPath){
+  return GestureDetector(
+    onTap: () => Navigator.pushNamed(context, TabChat.routeName),
+    child: Container(
+      margin: const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
+      padding: const EdgeInsets.all(15.0),
+      width: MediaQuery.of(context).size.width * 1/3,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2.0,
+          color: color
+        ),
+        borderRadius: BorderRadius.circular(15.0)
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            iconPath,
+            width: 25,
+            color: color,
+          ),
+          const SizedBox(width: 5.0),
+          Text(
+            text.toUpperCase(),
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 22, color: color, fontWeight: FontWeight.w700),
           ),
         ],
       ),
