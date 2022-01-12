@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_app/src/screens/detail.dart';
+import 'package:food_app/routs.dart';
+import 'package:food_app/src/screens/auth/sign_in_screen.dart';
 import 'package:food_app/src/screens/home_screen.dart';
-import 'package:food_app/src/screens/search/search_screen.dart';
-import 'package:food_app/src/screens/tab_cart.dart';
-import 'package:food_app/src/screens/tab_chat.dart';
+import 'package:food_app/src/screens/splash/splash_widget.dart';
+import 'package:food_app/src/view_models/auth/auth_view_model.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
+import 'package:food_app/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -30,21 +31,14 @@ class _FoodAppState extends State<FoodApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<CartViewModel>(create: (_) => CartViewModel()),
+        ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
       ],
       child: MaterialApp(
+      theme: theme(),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: {
-        '/HomeScreen' : (context) => const HomeScreen(),
-        '/DetailScreen' : (context) => const DetailScreen(),
-        '/TabCart' : (context) => const TabCart(),
-        '/TabChat' : (context) => const TabChat(),
-        '/SearchScreen' : (context) => const SearchScreen(),
-      },
-      theme: ThemeData(
-        fontFamily: 'Assistant',
-      ),
-      home: const HomeScreen(),
+      routes: routes,
+      home: const SplashWidget()
     ),
     );
   }

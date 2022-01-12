@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/theme/color.dart';
 
+
+const TextStyle header =
+    TextStyle(fontSize: 40, color: kBottomColor, fontWeight: FontWeight.w700);
+
 const TextStyle titleDark =
     TextStyle(fontSize: 22, color: kBottomColor, fontWeight: FontWeight.w700);
 
@@ -8,7 +12,7 @@ const TextStyle titleLight =
     TextStyle(fontSize: 22, color: kWhiteColor, fontWeight: FontWeight.w500);
 
 const TextStyle paragraphDark = TextStyle(
-    fontSize: 15, color: kLightGreyColor, fontWeight: FontWeight.w500);
+    fontSize: 15, color: kBorderColor, fontWeight: FontWeight.w600);
 
 const TextStyle paragraphLight =
     TextStyle(fontSize: 15, color: kBorderColor, fontWeight: FontWeight.w400);

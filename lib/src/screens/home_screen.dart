@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/src/screens/search/search_screen.dart';
 import 'package:food_app/src/screens/tab_cart.dart';
-import 'package:food_app/src/screens/tab_chat.dart';
+import 'package:food_app/src/screens/chat/tab_chat.dart';
 import 'package:food_app/src/screens/tab_home.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
 import 'package:food_app/src/widgets/scroll_to_hide_widget.dart';
@@ -80,8 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  BottomNavigationBarItem buildBottomNavigationBarItem(
-      String image, int index, {int badge = 0}) {
+  BottomNavigationBarItem buildBottomNavigationBarItem(String image, int index, {int badge = 0}) {
     var bottomNavigationBarItem = BottomNavigationBarItem(
         icon: Padding(
           padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0),
@@ -114,15 +113,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Center(
                         child: Text(
                           badge.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
-                            color: selectedIndex == index ? kBottomColor : kWhiteColor,
+                            color: kWhiteColor,
                           ),
                         ),
                       ),
                     )
-                  ) : Container(child: SizedBox.shrink(),)
+                  ) : Container(child: const SizedBox.shrink(),)
                 ],
               ),
               

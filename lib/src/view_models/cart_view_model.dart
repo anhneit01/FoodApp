@@ -1,9 +1,9 @@
 
-import 'package:flutter/material.dart';
 import 'package:food_app/src/model/cart.dart';
 import 'package:food_app/src/model/product.dart';
+import 'package:food_app/src/view_models/base/base_view_model.dart';
 
-class CartViewModel extends ChangeNotifier{
+class CartViewModel extends BaseViewModel{
   // ignore: prefer_final_fields
   List<Cart> _carts = [];
 

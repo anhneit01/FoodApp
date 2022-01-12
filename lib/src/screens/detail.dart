@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:food_app/src/model/product.dart';
-import 'package:food_app/src/screens/tab_chat.dart';
+import 'package:food_app/src/screens/chat/tab_chat.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
 import 'package:food_app/src/widgets/custom_appbar.dart';
 import 'package:food_app/theme/color.dart';

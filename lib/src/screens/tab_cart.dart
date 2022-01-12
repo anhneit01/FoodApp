@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/src/model/cart.dart';
-import 'package:food_app/src/screens/detail.dart';
 import 'package:food_app/src/screens/home_screen.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
 import 'package:food_app/src/widgets/custom_appbar.dart';
@@ -36,7 +35,9 @@ class TabCart extends StatelessWidget {
                     color: kPrimaryColor.withOpacity(0.8),
                     borderRadius: BorderRadius.circular(20.0)),
                 child: Row(
-                  children: [Spacer(), Image.asset('assets/images/delete.png')],
+                  children: [
+                    const Spacer(), 
+                    Image.asset('assets/images/delete.png')],
                 ),
               ),
               child: _buildCartItem(context, cart.carts.elementAt(index))),
@@ -76,7 +77,7 @@ Widget _buildCartItem(BuildContext context, Cart cart) {
             child: Image.asset(cart.product.image.toString()),
           ),
         ),
-        const SizedBox(width: 20.0),
+        const Spacer(),
         Row(
           children: [
             SizedBox(
