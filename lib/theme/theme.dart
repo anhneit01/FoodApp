@@ -51,3 +51,4 @@ class SocialCard extends StatelessWidget {
     );
   }
 }
+

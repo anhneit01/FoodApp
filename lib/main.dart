@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_app/routs.dart';
-import 'package:food_app/src/screens/auth/sign_in_screen.dart';
 import 'package:food_app/src/screens/home_screen.dart';
-import 'package:food_app/src/screens/splash/splash_widget.dart';
 import 'package:food_app/src/view_models/auth/auth_view_model.dart';
 import 'package:food_app/src/view_models/cart_view_model.dart';
+import 'package:food_app/src/widgets/demo/sliver_appbar.dart';
 import 'package:food_app/theme/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +37,7 @@ class _FoodAppState extends State<FoodApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: routes,
-      home: const SplashWidget()
+      home: const CustomSliverAppbar()
     ),
     );
   }

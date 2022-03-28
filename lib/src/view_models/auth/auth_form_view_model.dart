@@ -29,7 +29,9 @@ class AuthFormViewModel extends BaseViewModel {
   }
 
   changePassword(String value) {
-    if(value.length >= 3) {
+    RegExp regex =
+        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+    if(regex.hasMatch(value)) {
       _password = ValidationItem(value:  value, error: null);
     } else {
       _password = ValidationItem(value: null, error: "Must be at least 1 characters");

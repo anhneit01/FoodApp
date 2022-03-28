@@ -38,15 +38,15 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppbar(
+        leftIcon: Icons.arrow_back_ios_new_rounded,
+        rightIcon: Icons.favorite_border_rounded,
+        leftCallback: () => Navigator.of(context).pop(),
+      ),
       backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomAppbar(
-              leftIcon: Icons.arrow_back_ios_new_rounded,
-              rightIcon: Icons.favorite_border_rounded,
-              leftCallback: () => Navigator.of(context).pop(),
-            ),
             _buildProductImg(context, product!),
             buildProductDetail(context, product!)
           ],

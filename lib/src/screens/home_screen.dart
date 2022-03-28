@@ -8,6 +8,8 @@ import 'package:food_app/src/widgets/scroll_to_hide_widget.dart';
 import 'package:food_app/theme/color.dart';
 import 'package:provider/provider.dart';
 
+import 'auth/account/user_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   static const routeName = '/HomeScreen';
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const TabChat(),
     const SearchScreen(),
     const TabCart(),
-    const TabHome(),
+    const UserScreen(),
   ];
   int selectedIndex = 0;
   @override
@@ -81,54 +83,54 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   BottomNavigationBarItem buildBottomNavigationBarItem(String image, int index, {int badge = 0}) {
-    var bottomNavigationBarItem = BottomNavigationBarItem(
-        icon: Padding(
-          padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  ImageIcon(
-                    AssetImage(image),
-                    color: selectedIndex == index ? kPrimaryColor : kBottomColor,
-                    size: 25.0,
-                  ),
-                  index != 0 && index != 4 && index != 2 ? Positioned(
-                    right: -15,
-                    top: -10,
-                    child: Container(
-                      height: 24,
-                      width: 24,
-                      constraints: const BoxConstraints(
-                        maxWidth: 45,
-                        maxHeight: 45
-                      ),
-                      decoration: BoxDecoration(
-                        color: selectedIndex == index ? kPrimaryColor : kBottomColor,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: Text(
-                          badge.toString(),
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: kWhiteColor,
-                          ),
+    return BottomNavigationBarItem(
+      icon: Padding(
+        padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                ImageIcon(
+                  AssetImage(image),
+                  color: selectedIndex == index ? kPrimaryColor : kBottomColor,
+                  size: 25.0,
+                ),
+                index != 0 && index != 4 && index != 2 ? Positioned(
+                  right: -15,
+                  top: -10,
+                  child: Container(
+                    height: 24,
+                    width: 24,
+                    constraints: const BoxConstraints(
+                      maxWidth: 45,
+                      maxHeight: 45
+                    ),
+                    decoration: BoxDecoration(
+                      color: selectedIndex == index ? kPrimaryColor : kBottomColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Text(
+                        badge.toString(),
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: kWhiteColor,
                         ),
                       ),
-                    )
-                  ) : Container(child: const SizedBox.shrink(),)
-                ],
-              ),
-              
-            ],
-          ),
+                    ),
+                  )
+                ) : Container(child: const SizedBox.shrink(),)
+              ],
+            ),
+            
+          ],
         ),
-        title: Text(' '));
-    return bottomNavigationBarItem;
+      ),
+      label: ''
+    );
   }
 }
